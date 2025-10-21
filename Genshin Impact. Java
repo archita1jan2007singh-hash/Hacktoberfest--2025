@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class Character {
+    String name;
+    String element;
+    String ability;
+
+    public Character(String name, String element, String ability) {
+        this.name = name;
+        this.element = element;
+        this.ability = ability;
+    }
+
+    public void useAbility() {
+        System.out.println(name + " uses " + ability + " (" + element + " element)!");
+    }
+}
+
+public class GenshinLikeGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Character[] characters = {
+            new Character("Diluc", "Pyro", "Flaming Slash"),
+            new Character("Mona", "Hydro", "Mirror Reflection"),
+            new Character("Venti", "Anemo", "Wind's Whisper"),
+            new Character("Keqing", "Electro", "Stellar Restoration")
+        };
+
+        System.out.println("Choose your character:");
+        for (int i = 0; i < characters.length; i++) {
+            System.out.println((i + 1) + ". " + characters[i].name + " (" + characters[i].element + ")");
+        }
+
+        int choice = scanner.nextInt();
+
+        if (choice >= 1 && choice <= characters.length) {
+            Character selected = characters[choice - 1];
+            System.out.println("You selected: " + selected.name);
+            selected.useAbility();
+        } else {
+            System.out.println("Invalid choice.");
+        }
+
+        scanner.close();
+    }
+}
